@@ -1,8 +1,8 @@
 var contador = 0;
 
 function cellclick(celda){
-      if(window.getComputedStyle(celda).backgroundImage == "none") {
-           if(contador < 8) {
+    if(window.getComputedStyle(celda).backgroundImage == "none") {
+        if(contador < 8) {
             celda.style=   `background-image: url('img/reina.png');
                             background-size: 50px;
                             background-repeat: no-repeat;
@@ -14,7 +14,7 @@ function cellclick(celda){
                             if(contador == 8){
                                 document.getElementById("pganador").innerHTML = "FELICIDADES";
                             }
-                           
+                        
                             
                             
         }
@@ -35,10 +35,10 @@ function cellclick(celda){
 function cambiar(r,c){
     /*alert(r+""+c)*/
     var celda = document.getElementById("tablero");
-     var r1=r, c1=c, r2=r, c2=c;
-     var r3=r, c3=c, r4=r, c4=c;
+    var r1=r, c1=c, r2=r, c2=c;
+    var r3=r, c3=c, r4=r, c4=c;
 
-     for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
         celda.rows[r].cells[i].style.backgroundColor="#ff00008b";
         celda.rows[i].cells[c].style.backgroundColor="#ff00008b";
 
@@ -51,7 +51,7 @@ function cambiar(r,c){
             if(r4>=0 && c4<8) celda.rows[r4--].cells[c4++].style.backgroundColor="red";
 
     
-     }
+    }
 }
 
 function reinicio() {
@@ -82,14 +82,14 @@ function bloquear(celda){
 
             //Diagonal Principal
             if(row + i >=0 && row + i <8 && col + i >=0 && col + i < 8 && i !== 0){
-                 tablero.rows[row+i].cells[col+i].onclick = null;
+                tablero.rows[row+i].cells[col+i].onclick = null;
             }
 
                //Diagonal Secundaria
             if(row + i >=0 && row + i <8 && col - i >=0 && col - i < 8 && i !== 0){
-                 tablero.rows[row+i].cells[col-i].onclick = null;
+                tablero.rows[row+i].cells[col-i].onclick = null;
             }
-           
+        
         }
         
 }
@@ -99,35 +99,35 @@ function reiniciarBloqueo(celda){
     const col = celda.cellIndex;
     const tablero = document.getElementById("tablero");
     /*desbloqueamos la columna y renglon*/
-     for (let i = 0; i < 8; i++){
+    for (let i = 0; i < 8; i++){
         
             tablero.rows[row].cells[i].onclick = function(){
                 cellclick(this);
             }
 
             tablero.rows[i].cells[col].onclick = function(){
-                 cellclick(this);
+                cellclick(this);
             };
     }
 
-     for(let i = -7; i <= 7; i++){
+    for(let i = -7; i <= 7; i++){
 
             //Diagonal Principal
             if(row + i >=0 && row + i <=8 && col + i >=0 && col + i < 8 && i !== 0){
-                 tablero.rows[row+i].cells[col+i].onclick = function(){
+                tablero.rows[row+i].cells[col+i].onclick = function(){
                     cellclick(this);
-                 }
+                }
                 
             }
 
                //Diagonal Secundaria
             if(row + i >=0 && row + i <=8 && col - i >=0 && col - i < 8 && i !== 0){
-                 tablero.rows[row+i].cells[col-i].onclick = function(){
+                tablero.rows[row+i].cells[col-i].onclick = function(){
                     cellclick(this);
-                 }
-                  
+                }
+                
             }
-           
+        
         }
 
 
